@@ -1,0 +1,2 @@
+RAWG API Key
+  - 22b11c09e791419fb121c8d29c2eb6d2
