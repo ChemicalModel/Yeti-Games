@@ -45,4 +45,24 @@ function useInfo(minimumRequirements, recommendedRequirements) {
   console.log(processorArray)
   console.log(processorArray[0]);
   console.log(processorArray[1]);
+
+  const rfApiKey = '8F0C98B614134A8F8D5FB596FB8CADC5';
+  const rfApiUrl = `https://api.rainforestapi.com/request?api_key=${rfApiKey}&type=search&amazon_domain=amazon.com&search_term=${processorArray[0]}`;
+  
+  fetch(rfApiUrl)
+  .then(response => response.json())
+  .then(data => {
+
+  console.log(data);
+
+  const cpuResult1 = data.search_results[0].title
+  const cpuLink1 = data.search_results[0].link
+  const cpuPrice1 = data.search_results[0].price.raw
+  console.log(cpuResult1);
+  console.log(cpuLink1);
+  console.log(cpuPrice1);
+  })
+  .catch(error => console.log(error));
 };
+
+
