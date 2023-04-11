@@ -1,5 +1,44 @@
+// ========== API KEY VARIABLES =========== //
+let rainforestAPIKey;
+let rawgAPIKey;
+
+
+// ========== MIN/REC VARIABLES =========== //
+//variables to store the fetched min and rec requirements
+let minReq;
+let recReq;
+let processorArray;
+
+
+// ========== RAWG API KEY FUNCTION =========== //
+// This calls the API, just update the url to have your key's name.
+async function fetchKey1() {
+  const url = 'https://yorkieportunus.herokuapp.com/store/brogrammers-rawg-api-key'
+  const response = await fetch(url);
+  const key1 = await response.json();
+  return key1;
+}
+// Call this wherever you need your key.
+fetchKey1().then((key1) => {
+    rawgAPIKey = key1.apiKey;
+});
+// ========== RAINFOREST API KEY FUNCTION =========== //     
+// This calls the API, just update the url to have your key's name.
+async function fetchKey2() {
+  const url = 'https://yorkieportunus.herokuapp.com/store/brogrammers-rainforest-api-key'
+  const response = await fetch(url);
+  const key2 = await response.json();
+  return key2;
+}
+// Call this wherever you need your key.
+fetchKey2().then((key2) => {
+    rainforestAPIKey = key2.apiKey;
+});
+
+
+
 // ========== API VARIABLES =========== //
-const rawgApiKey = '22b11c09e791419fb121c8d29c2eb6d2';
+
 const inputField = document.querySelector('.search-bar input');
 const searchButton = document.querySelector('#search-button');
 
@@ -7,20 +46,16 @@ searchButton.addEventListener('click', function(event) {
   event.preventDefault(); // prevent form submission
 
   let gameName = inputField.value.trim().replace(/ /g, '-'); // Replace spaces with +
-  console.log(gameName);
-
-  const rawgApiUrl = `https://api.rawg.io/api/games/${gameName}?language=en&key=${rawgApiKey}`;
-
-  searchGames(rawgApiUrl);
+  const rawgApiUrl = `https://api.rawg.io/api/games/${gameName}?language=en&key=${rawgAPIKey}`;
+  fetchRawgApi(rawgApiUrl);
 });
 
-// ========== RAWG API REQUEST =========== //
-function searchGames(rawgApiUrl) {
-  const searchQuery = inputField.value;
 
+// ========== RAWG API REQUEST =========== //
+function fetchRawgApi(rawgApiUrl) {
+  const searchQuery = inputField.value;
   // perform search with searchQuery
   console.log(`Searching for ${searchQuery}`);
-
   // make a request to the RAWG API
   fetch(rawgApiUrl)
     .then(response => response.json())
@@ -28,7 +63,6 @@ function searchGames(rawgApiUrl) {
       const pcPlatforms = data.platforms.filter(platform => platform.platform.name === "PC");
       const minimumRequirements = pcPlatforms[0].requirements.minimum;
       const recommendedRequirements = pcPlatforms[0].requirements.recommended;
-
       console.log(minimumRequirements);
       console.log(recommendedRequirements);
 
@@ -43,11 +77,6 @@ function searchGames(rawgApiUrl) {
     .catch(error => console.log(error));
 }
 
-// ========== MIN/REC VARIABLES =========== //
-//variables to store the fetched min and rec requirements
-let minReq;
-let recReq;
-let processorArray;
 
 //Function to grab info once fetch is complete
 function useInfo(minimumRequirements, recommendedRequirements) {
@@ -65,8 +94,13 @@ function useInfo(minimumRequirements, recommendedRequirements) {
   console.log(processorArray[0]);
   console.log(processorArray[1]);
 
-  const rfApiKey = 'F3DAE02BEDB04EABA906462B516A48F9';
-  const rfApiUrl = `https://api.rainforestapi.com/request?api_key=${rfApiKey}&type=search&amazon_domain=amazon.com&search_term=${processorArray[0]}`;
+  fetchRainforestApi();
+};
+
+
+// ========== RAINFOREST API REQUEST =========== //
+function fetchRainforestApi() {
+  let rfApiUrl = `https://api.rainforestapi.com/request?api_key=${rainforestAPIKey}&type=search&amazon_domain=amazon.com&search_term=${processorArray[0]}`;
   
   fetch(rfApiUrl)
   .then(response => response.json())
@@ -82,8 +116,5 @@ function useInfo(minimumRequirements, recommendedRequirements) {
   console.log(cpuPrice1);
   })
   .catch(error => console.log(error));
-};
-
-
-
+};   
 
