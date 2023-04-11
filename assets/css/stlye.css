@@ -7,8 +7,7 @@ header {
   text-align: center;
   background-color: blueviolet;
   padding: 30px;
-  font-family: 'Abril Fatface', cursive;
-  ;
+  font-family: 'Abril Fatface', cursive;;
   color: aliceblue;
   font-size: 100px;
   font: weight 200px;
@@ -17,8 +16,7 @@ header {
 .description {
   text-align: center;
   margin-top: 20px;
-  font-family: 'Abril Fatface', cursive;
-  ;
+  font-family: 'Abril Fatface', cursive;;
   font-size: 50px;
 }
 
@@ -49,5 +47,18 @@ header {
 }
 
 .max-specs{
-  position: relative; left: 600px; bottom: 30px;
+  position: relative; left: 700px; bottom: 925px;
+}
+
+.min-specs-list{
+  font-weight: bold;
+}
+
+.max-specs-list{
+  position: relative; left: 680px; bottom: 925px;
+  font-weight: bold;
+}
+
+li{
+  padding: 100px;
 }
