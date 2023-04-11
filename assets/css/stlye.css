@@ -43,10 +43,11 @@ header {
   cursor: pointer;
 }
 
-h1{
- position: relative; top:300px; right: 300px;
+.min-specs{
+  margin-top: 250px;
+  position: relative; left: 20px;
 }
 
-h2{
-position: relative; top: 268px; left: 250px;
+.max-specs{
+  position: relative; left: 600px; bottom: 30px;
 }
