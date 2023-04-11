@@ -94,6 +94,12 @@ function useInfo(minimumRequirements, recommendedRequirements) {
   console.log(processorArray[0]);
   console.log(processorArray[1]);
 
+  // Get span elements by ID
+const processorSpan = document.getElementById("processorspan");
+
+// Update spans with fetched data
+processorSpan.innerHTML = processorArray[0];
+
   fetchRainforestApi();
 };
 
@@ -116,5 +122,4 @@ function fetchRainforestApi() {
   console.log(cpuPrice1);
   })
   .catch(error => console.log(error));
-};   
-
+};
