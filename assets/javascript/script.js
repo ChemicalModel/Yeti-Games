@@ -46,7 +46,7 @@ function useInfo(minimumRequirements, recommendedRequirements) {
   console.log(processorArray[0]);
   console.log(processorArray[1]);
 
-  const rfApiKey = '8F0C98B614134A8F8D5FB596FB8CADC5';
+  const rfApiKey = 'F3DAE02BEDB04EABA906462B516A48F9';
   const rfApiUrl = `https://api.rainforestapi.com/request?api_key=${rfApiKey}&type=search&amazon_domain=amazon.com&search_term=${processorArray[0]}`;
   
   fetch(rfApiUrl)
