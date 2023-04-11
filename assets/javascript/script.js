@@ -17,5 +17,32 @@ fetch(rawgApiUrl)
     
     console.log(minimumRequirements);
     console.log(recommendedRequirements);
+
+    //run function when data is fetched
+    useInfo(minimumRequirements, recommendedRequirements);
   })
   .catch(error => console.log(error));
+
+
+  // ========== MIN/REC VARIABLES =========== //
+//variables to store the fetched min and rec requirements
+let minReq;
+let recReq;
+let processorArray;
+
+//Function to grab info once fetch is complete
+function useInfo(minimumRequirements, recommendedRequirements) {
+  //sets global variable
+  minReq = minimumRequirements;
+  recReq = recommendedRequirements;
+  //grabs processor string
+  let processorStart = minReq.indexOf('Processor:') + 'Processor: '.length;
+  let processorEnd = minReq.indexOf('Memory');
+  let processorInfo = minReq.slice(processorStart, processorEnd).trim();
+  console.log(processorInfo);
+  //divides processor string into array
+  processorArray = processorInfo.split('or').map(proc => proc.trim());
+  console.log(processorArray)
+  console.log(processorArray[0]);
+  console.log(processorArray[1]);
+};
