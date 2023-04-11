@@ -42,3 +42,11 @@ header {
   border: none;
   cursor: pointer;
 }
+
+h1{
+ position: relative; top:300px; right: 300px;
+}
+
+h2{
+position: relative; top: 268px; left: 250px;
+}
