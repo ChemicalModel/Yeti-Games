@@ -1,30 +1,49 @@
-
 // ========== API VARIABLES =========== //
 const rawgApiKey = '22b11c09e791419fb121c8d29c2eb6d2';
-const gameName = 'elden-ring';
-const rawgApiUrl = `https://api.rawg.io/api/games/${gameName}?language=en&key=${rawgApiKey}`;
+const inputField = document.querySelector('.search-bar input');
+const searchButton = document.querySelector('#search-button');
 
+searchButton.addEventListener('click', function(event) {
+  event.preventDefault(); // prevent form submission
+
+  let gameName = inputField.value.trim().replace(/ /g, '-'); // Replace spaces with +
+  console.log(gameName);
+
+  const rawgApiUrl = `https://api.rawg.io/api/games/${gameName}?language=en&key=${rawgApiKey}`;
+
+  searchGames(rawgApiUrl);
+});
 
 // ========== RAWG API REQUEST =========== //
-// make a request to the RAWG API
-fetch(rawgApiUrl)
-  .then(response => response.json())
-  .then(data => {
-    
-    // extract the PC requirements for the first result
-    const minimumRequirements = data.platforms.find(platform => platform.platform.name === "PC").requirements.minimum;
-    const recommendedRequirements = data.platforms.find(platform => platform.platform.name === "PC").requirements.recommended;
-    
-    console.log(minimumRequirements);
-    console.log(recommendedRequirements);
+function searchGames(rawgApiUrl) {
+  const searchQuery = inputField.value;
 
-    //run function when data is fetched
-    useInfo(minimumRequirements, recommendedRequirements);
-  })
-  .catch(error => console.log(error));
+  // perform search with searchQuery
+  console.log(`Searching for ${searchQuery}`);
 
+  // make a request to the RAWG API
+  fetch(rawgApiUrl)
+    .then(response => response.json())
+    .then(data => {
+      const pcPlatforms = data.platforms.filter(platform => platform.platform.name === "PC");
+      const minimumRequirements = pcPlatforms[0].requirements.minimum;
+      const recommendedRequirements = pcPlatforms[0].requirements.recommended;
 
-  // ========== MIN/REC VARIABLES =========== //
+      console.log(minimumRequirements);
+      console.log(recommendedRequirements);
+
+      if (data.results) {
+        const filteredGames = data.results.filter(game => game.rating > 4.5); // or any other condition
+        console.log(filteredGames);
+      }
+
+      //run function when data is fetched
+      useInfo(minimumRequirements, recommendedRequirements);
+    })
+    .catch(error => console.log(error));
+}
+
+// ========== MIN/REC VARIABLES =========== //
 //variables to store the fetched min and rec requirements
 let minReq;
 let recReq;
@@ -64,5 +83,7 @@ function useInfo(minimumRequirements, recommendedRequirements) {
   })
   .catch(error => console.log(error));
 };
+
+
 
 
