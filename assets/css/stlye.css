@@ -42,3 +42,12 @@ header {
   border: none;
   cursor: pointer;
 }
+
+.min-specs{
+  margin-top: 250px;
+  position: relative; left: 20px;
+}
+
+.max-specs{
+  position: relative; left: 600px; bottom: 30px;
+}
