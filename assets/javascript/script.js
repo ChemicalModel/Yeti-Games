@@ -124,34 +124,37 @@ function fetchRainforestApi() {
 
   for (let i = 0; i < rfApiUrl.length; i++) {
     
-    fetch(rfApiUrl[i])
-    .then(response => response.json())
-    .then(data => {
-  
-  
-    const result1 = data.search_results[0].title ;
-    const result2 = data.search_results[0].link;
-    const result3 = data.search_results[0].image;
-    const result4 = data.search_results[0].price.raw;
-    if (result4 == 'undefined') {
-      result4 = ''
+   
+ fetch(rfApiUrl[i])
+  .then(response => response.json())
+  .then(data => {
+    console.log(data);
+    try {
+      const result1 = data.search_results[0].title ;
+      const result2 = data.search_results[0].link;
+      const result3 = data.search_results[0].image;
+      const result4 = data.search_results[0].price.raw;
+      
+      const item = {
+        title: result1,
+        link: result2,
+        image: result3,
+        price: result4
+      };
+    
+      results.push(item);
+      console.log(results);
+    } catch (error) {
+      // Modify the value of result4 if it caused an error
+      if (error instanceof TypeError || error.message.includes("cannot read property 'raw' of undefined")) {
+        item.price = '';
+      }
     }
-    
-    const item = {
-      title: result1,
-      link: result2,
-      image: result3,
-      price: result4
-    };
-    
-    results.push(item);
-    console.log(results);
-    })
-    .catch(error => console.log(error));
-  }
- return results;
- 
+  })
+  .catch(error => console.log(error));
+
   // Clears array from previous search
+}
   minComponentArray = [];
   recComponentArray = [];
 };
