@@ -31,7 +31,7 @@ fetchKey1().then((key1) => {
 // ========== RAINFOREST API KEY FUNCTION =========== //     
 // This calls the API, just update the url to have your key's name.
  async function fetchKey2() {
-   const url = 'https://yorkieportunus.herokuapp.com/store/brogrammers-rainforest-api-key'
+   const url = 'https://yorkieportunus.herokuapp.com/store/brogrammers-rainforest -apikey2'
    const response = await fetch(url);
    const key2 = await response.json();
    return key2;
