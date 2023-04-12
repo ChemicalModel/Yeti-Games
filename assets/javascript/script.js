@@ -3,11 +3,17 @@ let rainforestAPIKey;
 let rawgAPIKey;
 
 
-// ========== MIN/REC VARIABLES =========== //
-//variables to store the fetched min and rec requirements
-let minReq;
-let recReq;
-let processorArray;
+
+// ========== MIN/REC ARRAYS =========== //
+const neededComponents = [
+  'Processor',
+  'Memory',
+  'Graphics',
+  'Storage'
+];
+let minComponentArray = [];
+let recComponentArray = [];
+
 
 
 // ========== RAWG API KEY FUNCTION =========== //
@@ -37,18 +43,17 @@ fetchKey2().then((key2) => {
 
 
 
-// ========== API VARIABLES =========== //
-
+// ========== SEARCH EVENT LISTENER =========== //
 const inputField = document.querySelector('.search-bar input');
 const searchButton = document.querySelector('#search-button');
 
 searchButton.addEventListener('click', function(event) {
   event.preventDefault(); // prevent form submission
-
   let gameName = inputField.value.trim().replace(/ /g, '-'); // Replace spaces with +
   const rawgApiUrl = `https://api.rawg.io/api/games/${gameName}?language=en&key=${rawgAPIKey}`;
   fetchRawgApi(rawgApiUrl);
 });
+
 
 
 // ========== RAWG API REQUEST =========== //
@@ -71,34 +76,47 @@ function fetchRawgApi(rawgApiUrl) {
         console.log(filteredGames);
       }
 
-      //run function when data is fetched
+      //run useInfo function when data is fetched
       useInfo(minimumRequirements, recommendedRequirements);
     })
     .catch(error => console.log(error));
 }
 
 
-//Function to grab info once fetch is complete
+
+// ========== USE RAWG DATA FUNCTION =========== //
 function useInfo(minimumRequirements, recommendedRequirements) {
-  //sets global variable
-  minReq = minimumRequirements;
-  recReq = recommendedRequirements;
-  //grabs processor string
-  let processorStart = minReq.indexOf('Processor:') + 'Processor: '.length;
-  let processorEnd = minReq.indexOf('Memory');
-  let processorInfo = minReq.slice(processorStart, processorEnd).trim();
-  console.log(processorInfo);
-  //divides processor string into array
-  processorArray = processorInfo.split('or').map(proc => proc.trim());
-  console.log(processorArray)
-  console.log(processorArray[0]);
-  console.log(processorArray[1]);
+  //surrounded in an if to only build arrays if there are min or rec requirements
+  if (minimumRequirements) {
+    //split minReq strings into array
+    let minReqArray = minimumRequirements.split('\n');
+    console.log(minReqArray);
+    //loop through neededComponents array, and build min components array
+    for (i=0; i<neededComponents.length; i++) {
+      let minComponentString = minReqArray.find(str => str.startsWith(neededComponents[i]));
+      let minCompArray = minComponentString.split(':')[1].split(' or ');
+      minComponentArray.push(minCompArray);
+    };
+    console.log(minComponentArray);
+  }
+  if (recommendedRequirements) {
+    //split recReq strings into array
+    let recReqArray = recommendedRequirements.split('\n');
+    console.log(recReqArray);
+    //loop through neededComponents array, and build rec components array
+    for (i=0; i<neededComponents.length; i++) {
+      let recComponentString = recReqArray.find(str => str.startsWith(neededComponents[i]));
+      let recCompArray = recComponentString.split(':')[1].split(' or ');
+      recComponentArray.push(recCompArray);
+    };
+    console.log(recComponentArray);
+  }
+  console.log(minComponentArray[0][0]);
 
   // Get span elements by ID
-const processorSpan = document.getElementById("processorspan");
-
-// Update spans with fetched data
-processorSpan.innerHTML = processorArray[0];
+  const processorSpan = document.getElementById("processorspan");
+  // Update spans with fetched data
+  processorSpan.innerHTML = minComponentArray[0][0];
 
   fetchRainforestApi();
 };
@@ -106,7 +124,7 @@ processorSpan.innerHTML = processorArray[0];
 
 // ========== RAINFOREST API REQUEST =========== //
 function fetchRainforestApi() {
-  let rfApiUrl = `https://api.rainforestapi.com/request?api_key=${rainforestAPIKey}&type=search&amazon_domain=amazon.com&search_term=${processorArray[0]}`;
+  let rfApiUrl = `https://api.rainforestapi.com/request?api_key=${rainforestAPIKey}&type=search&amazon_domain=amazon.com&sort_by=featured&search_term=${minComponentArray[0][0]}`;
   
   fetch(rfApiUrl)
   .then(response => response.json())
