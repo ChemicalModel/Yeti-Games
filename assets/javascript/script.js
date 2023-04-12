@@ -38,7 +38,7 @@ fetchKey1().then((key1) => {
  }
  // Call this wherever you need your key.
  fetchKey2().then((key2) => {
-     rainforestAPIKey = key2.apiKey;/ 
+     rainforestAPIKey = key2.apiKey; 
 });
 
 
