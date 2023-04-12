@@ -44,7 +44,7 @@ fetchKey2().then((key2) => {
 
 
 // ========== SEARCH EVENT LISTENER =========== //
-const inputField = document.querySelector('.search-bar input');
+const inputField = document.querySelector('#search-bar input');
 const searchButton = document.querySelector('#search-button');
 
 searchButton.addEventListener('click', function(event) {
