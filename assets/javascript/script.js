@@ -142,4 +142,8 @@ function fetchRainforestApi() {
   console.log(cpuimg1);
   })
   .catch(error => console.log(error));
+
+  // Clears array from previous search
+  minComponentArray = [];
+  recComponentArray = [];
 };
