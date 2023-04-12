@@ -1,5 +1,5 @@
 // ========== API KEY VARIABLES =========== //
-let rainforestAPIKey = '6D6320721A7044449895AD55EF05895B';
+let rainforestAPIKey
 let rawgAPIKey;
 
 
@@ -30,16 +30,16 @@ fetchKey1().then((key1) => {
 });
 // ========== RAINFOREST API KEY FUNCTION =========== //     
 // This calls the API, just update the url to have your key's name.
-// async function fetchKey2() {
-//   const url = 'https://yorkieportunus.herokuapp.com/store/brogrammers-rainforest-api-key'
-//   const response = await fetch(url);
-//   const key2 = await response.json();
-//   return key2;
-// }
-// // Call this wherever you need your key.
-// fetchKey2().then((key2) => {
-//     rainforestAPIKey = key2.apiKey;
-// });
+ async function fetchKey2() {
+   const url = 'https://yorkieportunus.herokuapp.com/store/brogrammers-rainforest-api-key'
+   const response = await fetch(url);
+   const key2 = await response.json();
+   return key2;
+ }
+ // Call this wherever you need your key.
+ fetchKey2().then((key2) => {
+     rainforestAPIKey = key2.apiKey;/ 
+});
 
 
 
