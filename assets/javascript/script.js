@@ -1,5 +1,5 @@
 // ========== API KEY VARIABLES =========== //
-let rainforestAPIKey
+let rainforestAPIKey;
 let rawgAPIKey;
 
 
