@@ -113,11 +113,6 @@ function useInfo(minimumRequirements, recommendedRequirements) {
   }
   console.log(minComponentArray[0][0]);
 
-  // Get span elements by ID
-  const processorSpan = document.getElementById("processorspan");
-  // Update spans with fetched data
-  processorSpan.innerHTML = minComponentArray[0][0];
-
   fetchRainforestApi();
 };
 
@@ -146,4 +141,16 @@ function fetchRainforestApi() {
   // Clears array from previous search
   minComponentArray = [];
   recComponentArray = [];
+};
+
+function displayProductinfo() {
+  const processorSpan = document.getElementById("processorspan");
+  const memorySpan = document.getElementById("memoryspan");
+  const graphicsSpan = document.getElementById("graphicsspan");
+  const storageSpan = document.getElementById("storagespan");
+  
+  processorSpan.innerHTML = `${cpuResult1}, ${cpuLink1}, ${cpuimg1}, ${cpuPrice1}`;
+  memorySpan.innerHTML = ``;
+  graphicsSpan.innerHTML = ``;
+  storageSpan.innerHTML = ``;
 };
