@@ -134,10 +134,12 @@ function fetchRainforestApi() {
 
   const cpuResult1 = data.search_results[0].title
   const cpuLink1 = data.search_results[0].link
+  const cpuimg1 = data.search_results[0].image
   const cpuPrice1 = data.search_results[0].price.raw
   console.log(cpuResult1);
   console.log(cpuLink1);
   console.log(cpuPrice1);
+  console.log(cpuimg1);
   })
   .catch(error => console.log(error));
 };
