@@ -30,15 +30,15 @@ fetchKey1().then((key1) => {
 });
 // ========== RAINFOREST API KEY FUNCTION =========== //     
 // This calls the API, just update the url to have your key's name.
-async function fetchKey2() {
-  const url = 'https://yorkieportunus.herokuapp.com/store/brogrammers-rainforest-api-key'
-  const response = await fetch(url);
-  const key2 = await response.json();
-  return key2;
-}
-// Call this wherever you need your key.
-fetchKey2().then((key2) => {
-    rainforestAPIKey = key2.apiKey;
+ async function fetchKey2() {
+   const url = 'https://yorkieportunus.herokuapp.com/store/brogrammers-rainforest-api-key'
+   const response = await fetch(url);
+   const key2 = await response.json();
+   return key2;
+ }
+ // Call this wherever you need your key.
+ fetchKey2().then((key2) => {
+     rainforestAPIKey = key2.apiKey;/ 
 });
 
 
@@ -119,25 +119,38 @@ function useInfo(minimumRequirements, recommendedRequirements) {
 
 // ========== RAINFOREST API REQUEST =========== //
 function fetchRainforestApi() {
-  let rfApiUrl = `https://api.rainforestapi.com/request?api_key=${rainforestAPIKey}&type=search&amazon_domain=amazon.com&sort_by=featured&search_term=${minComponentArray[0][0]}`;
+  let rfApiUrl = [`https://api.rainforestapi.com/request?api_key=${rainforestAPIKey}&type=search&amazon_domain=amazon.com&sort_by=featured&search_term=${minComponentArray[0][0]}`, `https://api.rainforestapi.com/request?api_key=${rainforestAPIKey}&type=search&amazon_domain=amazon.com&sort_by=featured&search_term=${minComponentArray[1][0]}`, `https://api.rainforestapi.com/request?api_key=${rainforestAPIKey}&type=search&amazon_domain=amazon.com&sort_by=featured&search_term=${minComponentArray[2][0]}`, `https://api.rainforestapi.com/request?api_key=${rainforestAPIKey}&type=search&amazon_domain=amazon.com&sort_by=featured&search_term=${minComponentArray[3][0]}`];
+  let results = [];
+
+  for (let i = 0; i < rfApiUrl.length; i++) {
+    
+    fetch(rfApiUrl[i])
+    .then(response => response.json())
+    .then(data => {
   
-  fetch(rfApiUrl)
-  .then(response => response.json())
-  .then(data => {
-
-  console.log(data);
-
-  const cpuResult1 = data.search_results[0].title
-  const cpuLink1 = data.search_results[0].link
-  const cpuimg1 = data.search_results[0].image
-  const cpuPrice1 = data.search_results[0].price.raw
-  console.log(cpuResult1);
-  console.log(cpuLink1);
-  console.log(cpuPrice1);
-  console.log(cpuimg1);
-  })
-  .catch(error => console.log(error));
-
+  
+    const result1 = data.search_results[0].title ;
+    const result2 = data.search_results[0].link;
+    const result3 = data.search_results[0].image;
+    const result4 = data.search_results[0].price.raw;
+    if (result4 == 'undefined') {
+      result4 = ''
+    }
+    
+    const item = {
+      title: result1,
+      link: result2,
+      image: result3,
+      price: result4
+    };
+    
+    results.push(item);
+    console.log(results);
+    })
+    .catch(error => console.log(error));
+  }
+ return results;
+ 
   // Clears array from previous search
   minComponentArray = [];
   recComponentArray = [];
@@ -153,4 +166,5 @@ function displayProductinfo() {
   memorySpan.innerHTML = ``;
   graphicsSpan.innerHTML = ``;
   storageSpan.innerHTML = ``;
+
 };
