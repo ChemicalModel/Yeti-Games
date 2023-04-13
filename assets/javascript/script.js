@@ -9,7 +9,7 @@ const neededComponents = [
   'Graphics',
   'Storage'
 ];
-const memorySearchTerm = 'ddr4 Memory';
+const memorySearchTerm = 'ddr4 dimm';
 const storageSearchTerm = 'sata ssd';
 
 
@@ -261,19 +261,35 @@ function fetchRainforestApi() {
           // Update the HTML with the results
           if (i < 4) {
             let element = minimumSpecs.children[i].querySelector('span');
+            element.innerHTML = '';
+            let title = document.createElement('p');
+            title.innerHTML = item.title;
+            element.append(title);
+            let image = document.createElement('img');
+            image.src = item.image;
+            image.alt = item.title;
             let link = document.createElement('a');
             link.href = item.link;
-            link.innerHTML = item.title;
             link.setAttribute('target', '_blank');
-            element.innerHTML = '';
+            link.appendChild(image);
+            image.style.maxWidth = '100%';
+            image.style.maxHeight = '200px';
             element.append(link);
           } else {
             let element = maximumSpecs.children[i - 4].querySelector('span');
+            element.innerHTML = '';
+            let title = document.createElement('p');
+            title.innerHTML = item.title;
+            element.append(title);
+            let image = document.createElement('img');
+            image.src = item.image;
+            image.alt = item.title;
             let link = document.createElement('a');
             link.href = item.link;
-            link.innerHTML = item.title;
             link.setAttribute('target', '_blank');
-            element.innerHTML = '';
+            link.appendChild(image);
+            image.style.maxWidth = '100%';
+            image.style.maxHeight = '200px';
             element.append(link);
           }
         } catch (error) {
