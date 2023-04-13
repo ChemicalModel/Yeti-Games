@@ -1,4 +1,4 @@
-<a name="logo" href="#">
+<a name="logo" href="https://chemicalmodel.github.io/Yeti-Games/">
 <img style="text-align: center" src="./assets/images/yeti-games-screenshot.jpg" alt="Yeti Games: PC Requirements Checker" style="width:100%;height:100%"/>
 </a>
 <br />
@@ -44,7 +44,7 @@ Note: This application is perfect for those who are newer to the gaming life, an
 
 ## [Project Status](#project-status)
 Minimal Viable Product(MVP) - Deployed<br />
-Please visit our <a href="#">YETI GAMES Deployed Site.</a>
+Please visit our <a href="https://chemicalmodel.github.io/Yeti-Games/">YETI GAMES Deployed Site.</a>
 
 
 <br />
