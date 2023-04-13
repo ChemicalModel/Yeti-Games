@@ -134,6 +134,13 @@ searchButton.addEventListener('click', function(event) {
     return;
   };
 
+  //display divs when clicked
+  let hiddenDiv1 = document.querySelector('.min-specs-list');
+  hiddenDiv1.style.display = 'inline-block';
+
+  let hiddenDiv2 = document.querySelector('.max-specs-list');
+  hiddenDiv2.style.display = 'inline-block';
+
   addSearchToHistory();
   sendToStorage();
 
