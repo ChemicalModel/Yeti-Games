@@ -124,22 +124,24 @@ function sendToStorage() {
 
 //=====================================================================================
 // ========== MODAL =========== //
-let modal = document.getElementById("myModal");
-let span = document.getElementsByClassName("close")[0];
-let modalButton = document.querySelector('.modal-button');
+let modal1 = document.getElementById("myModal1");
+let modal2 = document.getElementById("myModal2");
+let span = document.getElementsByClassName("close1")[0];
+let modalButton = document.querySelector('.modal-button1');
 
 window.onload = function() {
-  modal.style.display = "block";
+  modal1.style.display = "block";
 }
 span.onclick = function() {
-  modal.style.display = "none";
+  modal1.style.display = "none";
 }
+
 modalButton.onclick = function() {
-  modal.style.display = "none";
+  modal1.style.display = "none";
 }
 window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
+  if (event.target == modal1) {
+    modal1.style.display = "none";
   }
 }
 
@@ -154,6 +156,20 @@ searchButton.addEventListener('click', function(event) {
 
   //breaks clickfunction if input is empty
   if (inputField.value == '') {
+    modal2.style.display = "block";
+    let span2 = document.getElementsByClassName("close2")[0];
+    let modalButton2 = document.querySelector('.modal-button2');
+    span2.onclick = function() {
+      modal2.style.display = "none";
+    }
+    modalButton2.onclick = function() {
+      modal2.style.display = "none";
+    }
+    window.onclick = function(event) {
+      if (event.target == modal2) {
+        modal2.style.display = "none";
+      }
+    }
     return;
   };
 
