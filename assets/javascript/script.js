@@ -261,12 +261,21 @@ function fetchRainforestApi() {
           // Update the HTML with the results
           if (i < 4) {
             let element = minimumSpecs.children[i].querySelector('span');
-            element.textContent = item.title;
+            let link = document.createElement('a');
+            link.href = item.link;
+            link.innerHTML = item.title;
+            link.setAttribute('target', '_blank');
+            element.innerHTML = '';
+            element.append(link);
           } else {
             let element = maximumSpecs.children[i - 4].querySelector('span');
-            element.textContent = item.title;
+            let link = document.createElement('a');
+            link.href = item.link;
+            link.innerHTML = item.title;
+            link.setAttribute('target', '_blank');
+            element.innerHTML = '';
+            element.append(link);
           }
-
         } catch (error) {
           // Modify the value of result4 if it caused an error
 
