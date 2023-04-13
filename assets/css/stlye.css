@@ -6,12 +6,8 @@ header {
   height: 100%;
   text-align: center;
   padding: 30px;
-  font-family: 'Abril Fatface', cursive;;
-  color: rgba(10, 21, 26, 0.616);
+  font-family:'Poppins', sans-serif;
   font-size: 100px;
   font: weight 200px;
 }
 
-body{
-  background-color: rgba(106, 159, 194, 0.616);
-}
