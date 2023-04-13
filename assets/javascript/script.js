@@ -9,6 +9,10 @@ const neededComponents = [
   'Graphics',
   'Storage'
 ];
+const memorySearchTerm = 'Memory';
+const storageSearchTerm = 'Hard Drive';
+
+
 let minComponentArray = [];
 let recComponentArray = [];
 let searchArray;
@@ -174,13 +178,14 @@ function useInfo(minimumRequirements, recommendedRequirements) {
   if (minimumRequirements) {
     //split minReq strings into array
     let minReqArray = minimumRequirements.split('\n');
-    console.log(minReqArray);
     //loop through neededComponents array, and build min components array
     for (i=0; i<neededComponents.length; i++) {
       let minComponentString = minReqArray.find(str => str.startsWith(neededComponents[i]));
       let minCompArray = minComponentString.split(':')[1].split(' or ');
       minComponentArray.push(minCompArray);
     };
+    minComponentArray[1] = [memorySearchTerm + minComponentArray[1]];
+    minComponentArray[3] = [storageSearchTerm + minComponentArray[3]];
     console.log(minComponentArray);
   }
   if (recommendedRequirements) {
@@ -193,9 +198,10 @@ function useInfo(minimumRequirements, recommendedRequirements) {
       let recCompArray = recComponentString.split(':')[1].split(' or ');
       recComponentArray.push(recCompArray);
     };
+    recComponentArray[1] = [memorySearchTerm + recComponentArray[1]];
+    recComponentArray[3] = [storageSearchTerm + recComponentArray[3]];
     console.log(recComponentArray);
   }
-  console.log(minComponentArray[0][0]);
 
   fetchRainforestApi();
 };
@@ -203,7 +209,10 @@ function useInfo(minimumRequirements, recommendedRequirements) {
 
 // ========== RAINFOREST API REQUEST =========== //
 function fetchRainforestApi() {
-  let rfApiUrl = [`https://api.rainforestapi.com/request?api_key=${rainforestAPIKey}&type=search&amazon_domain=amazon.com&sort_by=featured&search_term=${minComponentArray[0][0]}`, `https://api.rainforestapi.com/request?api_key=${rainforestAPIKey}&type=search&amazon_domain=amazon.com&sort_by=featured&search_term=${minComponentArray[1][0]}`, `https://api.rainforestapi.com/request?api_key=${rainforestAPIKey}&type=search&amazon_domain=amazon.com&sort_by=featured&search_term=${minComponentArray[2][0]}`, `https://api.rainforestapi.com/request?api_key=${rainforestAPIKey}&type=search&amazon_domain=amazon.com&sort_by=featured&search_term=${minComponentArray[3][0]}`];
+  let rfApiUrl = [`https://api.rainforestapi.com/request?api_key=${rainforestAPIKey}&type=search&amazon_domain=amazon.com&sort_by=featured&search_term=${minComponentArray[0][0]}`,
+                  `https://api.rainforestapi.com/request?api_key=${rainforestAPIKey}&type=search&amazon_domain=amazon.com&sort_by=featured&search_term=${minComponentArray[1][0]}`, 
+                  `https://api.rainforestapi.com/request?api_key=${rainforestAPIKey}&type=search&amazon_domain=amazon.com&sort_by=featured&search_term=${minComponentArray[2][0]}`, 
+                  `https://api.rainforestapi.com/request?api_key=${rainforestAPIKey}&type=search&amazon_domain=amazon.com&sort_by=featured&search_term=${minComponentArray[3][0]}`];
   let results = [];
 
   for (let i = 0; i < rfApiUrl.length; i++) {
