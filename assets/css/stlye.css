@@ -47,38 +47,47 @@ img {
   text-decoration: underline;
   font-weight: bolder;
 }
-.modal-content div {
+.modal-content-div {
   padding: 20px;
-  background-image: url('../images/508681-PI21CR-475.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
   border-radius: 0 0 10px 10px;
   font-size: 20px;
   text-align: center;
 }
-#modal-content-div p {
+.modal-content-div p {
   padding-top: 20px;
   font-weight: bolder;
 }
-#modal-content-div button {
+.modal-content-div button {
   background: linear-gradient(to right, #6268f2, #23d0ee);
-
   color: white;
   font-weight: bolder;
   padding: 15px;
   border-radius: 10px;
   margin-top: 50px;
 }
+#modal1 {
+  background-image: url('../images/508681-PI21CR-475.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#modal2 {
+  background-image: url('../images/2828921.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 /* Style the close button */
-.close {
+.close1,
+.close2 {
   color: #aaa;
   float: right;
   font-size: 28px;
   font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
+.close1:hover,
+.close1:focus,
+.close2:hover,
+.close2:focus {
   color: black;
   text-decoration: none;
   cursor: pointer;
