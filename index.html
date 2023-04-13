@@ -11,7 +11,7 @@
   <title>Yeti Games PC Hardware Checker</title>
   <div class="flex justify-center">
     <!--Yeti SVG-->
-    <svg class="h-32 hover:fill-white" width="200px" height="200px" viewBox="0 0 400 400" fill="none"
+    <svg class="h-32 hover:fill-white hover:skew-y-12 hover:animate-bounce" width="200px" height="200px" viewBox="0 0 400 400" fill="none"
       xmlns="http://www.w3.org/2000/svg">
       <path
         d="M156.742 73.3269C163.153 60.4741 171.303 50.3291 185.623 45.9472C265.623 21.4721 265.535 157.679 189.904 150.841C172.153 149.238 154.313 133.339 152.714 117.401C151.927 109.571 152.609 101.066 153.383 93.3615"
@@ -20,8 +20,7 @@
         stroke-width="16" stroke-linecap="round" stroke-linejoin="round" />
       <path d="M260.142 105.661C286.442 115.349 300.213 184.124 291.285 227.132" stroke="#000000" stroke-opacity="0.9"
         stroke-width="16" stroke-linecap="round" stroke-linejoin="round" />
-      <path
-        d="M153.526 233.004C144.571 221.356 145.054 199.115 149.033 172.638M245.772 164.161C251.326 189.186 250.454 217.726 241.41 230.135L245.772 164.161Z"
+      <path d="M153.526 233.004C144.571 221.356 145.054 199.115 149.033 172.638M245.772 164.161C251.326 189.186 250.454 217.726 241.41 230.135L245.772 164.161Z"
         stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" />
       <path d="M157.208 248.929C156.715 283.572 149.942 317.5 149.942 351.862" stroke="#000000" stroke-opacity="0.9"
         stroke-width="16" stroke-linecap="round" stroke-linejoin="round" />
@@ -57,7 +56,7 @@
         stroke-width="16" stroke-linecap="round" stroke-linejoin="round" />
     </svg>
     <!--Controller SVG-->
-    <svg class="h-32 fill-white hover:fill-black" fill="#000000" height="200px" width="200px" version="1.1" id="Layer_1"
+    <svg class="h-32 fill-white hover:fill-black hover:skew-y-12 hover:animate-pulse" fill="#000000" height="200px" width="200px" version="1.1" id="Layer_1"
       xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512.001 512.001"
       xml:space="preserve">
       <g>
@@ -143,15 +142,13 @@
   </div>
 </head>
 <!--Header-->
-<header class="text-white text-5xl font-bold underline"><a href="https://github.com/ChemicalModel/Yeti-Games"
-    target="_blank">YETI Games: PC
-    Requirements Checker</a></header>
-<!--Search bar-->
+<header class="text-white hover:text-black text-5xl font-bold underline ring-2 ring-stone-900 hover:ring-amber-500"><a href="https://github.com/ChemicalModel/Yeti-Games"target="_blank">YETI Games: PC Requirements Checker</a></header>
 <body class="bg-gradient-to-r from-indigo-500 to-cyan-400">
+  <!--Search bar-->
   <div id="search-bar">
-    <form action="#" class="flex justify-center py-32">
+    <form action="#" class="flex justify-center py-28">
       <input type="text"
-        class="rounded-l-lg p-4 border-t mr-0 border-b border-l text-gray-800 border-gray-200 bg-white w-96"
+        class="rounded-l-lg p-4 border-t mr-0 border-b border-l text-gray-800 border-gray-200 bg-white w-96 caret-pink-500"
         placeholder="Search Game By Title" />
       <!--Search Button-->
       <button id="search-button"
@@ -183,10 +180,9 @@
   </div>
   <!--Footer-->
   <footer class="outline outline-offset-2 outline-2">
-    <p class="mt-36 flex justify-center text-center font-bold italic text-slate-500">Resources: Rainforest API and RAWG
-      API</p>
-    <p class="flex justify-center font-bold italic text-slate-500">Contributers: Michael Mcleod, Devin Reilly, Jose
-      Torres, Tyler Eppley</p>
+    <p class="mt-36 flex justify-center text-center font-bold italic text-slate-500">Resources: Rainforest API and RAWG API</p>
+    <p class="flex justify-center text-center font-bold italic text-slate-500">Styled with Tailwind <a href="https://tailwindcss.com/"target="_blank"><svg height="36" preserveAspectRatio="xMidYMid" width="28" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 153.6"><linearGradient id="a" x1="-2.778%" y1="32%" y2="67.556%"><stop offset="0" stop-color="#2298bd"/><stop offset="1" stop-color="#0ed7b5"/></linearGradient><path d="M128 0C93.867 0 72.533 17.067 64 51.2 76.8 34.133 91.733 27.733 108.8 32c9.737 2.434 16.697 9.499 24.401 17.318C145.751 62.057 160.275 76.8 192 76.8c34.133 0 55.467-17.067 64-51.2-12.8 17.067-27.733 23.467-44.8 19.2-9.737-2.434-16.697-9.499-24.401-17.318C174.249 14.743 159.725 0 128 0zM64 76.8C29.867 76.8 8.533 93.867 0 128c12.8-17.067 27.733-23.467 44.8-19.2 9.737 2.434 16.697 9.499 24.401 17.318C81.751 138.857 96.275 153.6 128 153.6c34.133 0 55.467-17.067 64-51.2-12.8 17.067-27.733 23.467-44.8 19.2-9.737-2.434-16.697-9.499-24.401-17.318C110.249 91.543 95.725 76.8 64 76.8z" fill="url(#a)"/> </a> </svg> </p>
+    <p class="flex justify-center font-bold italic text-slate-500">Contributers: Michael Mcleod, Devin Reilly, Jose Torres, Tyler Eppley</p>
   </footer>
 
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
