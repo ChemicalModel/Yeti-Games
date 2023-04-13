@@ -9,8 +9,8 @@ const neededComponents = [
   'Graphics',
   'Storage'
 ];
-const memorySearchTerm = 'Memory';
-const storageSearchTerm = 'Hard Drive';
+const memorySearchTerm = 'ddr4 Memory';
+const storageSearchTerm = 'sata ssd';
 
 
 let minComponentArray = [];
@@ -220,7 +220,11 @@ function fetchRainforestApi() {
     `https://api.rainforestapi.com/request?api_key=${rainforestAPIKey}&type=search&amazon_domain=amazon.com&sort_by=featured&search_term=${minComponentArray[0][0]}`,
     `https://api.rainforestapi.com/request?api_key=${rainforestAPIKey}&type=search&amazon_domain=amazon.com&sort_by=featured&search_term=${minComponentArray[1][0]}`,
     `https://api.rainforestapi.com/request?api_key=${rainforestAPIKey}&type=search&amazon_domain=amazon.com&sort_by=featured&search_term=${minComponentArray[2][0]}`,
-    `https://api.rainforestapi.com/request?api_key=${rainforestAPIKey}&type=search&amazon_domain=amazon.com&sort_by=featured&search_term=${minComponentArray[3][0]}`
+    `https://api.rainforestapi.com/request?api_key=${rainforestAPIKey}&type=search&amazon_domain=amazon.com&sort_by=featured&search_term=${minComponentArray[3][0]}`,
+    `https://api.rainforestapi.com/request?api_key=${rainforestAPIKey}&type=search&amazon_domain=amazon.com&sort_by=featured&search_term=${recComponentArray[0][0]}`,
+    `https://api.rainforestapi.com/request?api_key=${rainforestAPIKey}&type=search&amazon_domain=amazon.com&sort_by=featured&search_term=${recComponentArray[1][0]}`,
+    `https://api.rainforestapi.com/request?api_key=${rainforestAPIKey}&type=search&amazon_domain=amazon.com&sort_by=featured&search_term=${recComponentArray[2][0]}`,
+    `https://api.rainforestapi.com/request?api_key=${rainforestAPIKey}&type=search&amazon_domain=amazon.com&sort_by=featured&search_term=${recComponentArray[3][0]}`
   ];
 
   let minimumSpecs = document.querySelector('.min-specs-list');
