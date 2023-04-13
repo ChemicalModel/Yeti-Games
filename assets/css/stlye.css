@@ -10,3 +10,7 @@ header {
   font-size: 100px;
   font: weight 200px;
 }
+
+img {
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+}
