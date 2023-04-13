@@ -295,7 +295,7 @@ function fetchRainforestApi() {
             link.href = item.link;
             link.setAttribute('target', '_blank');
             link.appendChild(image);
-            image.style.maxWidth = '100%';
+            image.style.maxWidth = '300px';
             image.style.maxHeight = '200px';
             element.append(link);
           } else {
@@ -311,7 +311,7 @@ function fetchRainforestApi() {
             link.href = item.link;
             link.setAttribute('target', '_blank');
             link.appendChild(image);
-            image.style.maxWidth = '100%';
+            image.style.maxWidth = '300px';
             image.style.maxHeight = '200px';
             element.append(link);
           }
