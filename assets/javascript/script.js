@@ -2,8 +2,6 @@
 let rainforestAPIKey;
 let rawgAPIKey;
 
-
-
 // ========== MIN/REC ARRAYS =========== //
 const neededComponents = [
   'Processor',
@@ -13,9 +11,17 @@ const neededComponents = [
 ];
 let minComponentArray = [];
 let recComponentArray = [];
+let searchArray;
+let searchHistoryLimit = 5;
+
+// ========== ELEMENTS FROM PAGE =========== //
+const datalist = document.querySelector('#search-options');
+const inputField = document.querySelector('#search-bar input');
+const searchButton = document.querySelector('#search-button');
 
 
 
+//=====================================================================================
 // ========== RAWG API KEY FUNCTION =========== //
 // This calls the API, just update the url to have your key's name.
 async function fetchKey1() {
@@ -42,13 +48,91 @@ fetchKey1().then((key1) => {
 });
 
 
+//=====================================================================================
+// Check Storage/Build Array
+function checkStorage() {
+  if ( localStorage.getItem('searchHistory') ) {
+    const stringArray = localStorage.getItem('searchHistory');
+    searchArray = JSON.parse(stringArray);
+  } else {
+    searchArray = [];
+  };
+  searchHistoryArrray();
+};
+checkStorage();
+//=========================
+// Build From Array
+function searchHistoryArrray() {
+  const datalist = document.querySelector('#search-options');
+  //loops through array from storage, builds options, inserts into database
+  for (i=0; i<searchArray.length; i++) {
+    const option = document.createElement("option");
+    option.value = searchArray[i];
+    option.text = searchArray[i];
+    datalist.append(option);
+  }
+};
+//=========================
+// Add Input Search to History
+function addSearchToHistory() {
+  const searchTerm = inputField.value.trim();
+  //check for duplicates in array
+  const index = searchArray.indexOf(searchTerm);
+  if (index > -1) {
+    searchArray.splice(index, 1);
+  };
+  //sets input in array
+  searchArray.unshift(searchTerm);
+  // limit array to 5 items
+  if (searchArray.length > searchHistoryLimit) {
+    searchArray.pop(); // remove last item
+  };
 
+  //check for duplicates in database
+  const options = datalist.options;
+  for (let i = 0; i < options.length; i++) {
+    if (options[i].value === searchTerm) {
+      const datalist = document.querySelector('#search-options');
+      const optionToRemove = datalist.querySelector(`option[value="${searchTerm}"]`);
+      datalist.removeChild(optionToRemove);
+      break;
+    };
+  };
+  //builds option and insert into database
+  const option = document.createElement("option");
+  option.value = searchTerm;
+  option.text = searchTerm;
+  datalist.insertBefore(option, datalist.options[0]);  
+  // limit database to 5 items
+  if (datalist.options.length > searchHistoryLimit) {
+    datalist.removeChild(datalist.lastElementChild);
+  };
+
+}
+//=========================
+// Send To Storage
+function sendToStorage() {
+  let arrayString = JSON.stringify(searchArray);
+  localStorage.setItem('searchHistory', arrayString);
+};
+
+
+
+
+
+//===============================================================================================================================
 // ========== SEARCH EVENT LISTENER =========== //
-const inputField = document.querySelector('#search-bar input');
-const searchButton = document.querySelector('#search-button');
-
 searchButton.addEventListener('click', function(event) {
   event.preventDefault(); // prevent form submission
+
+  //breaks clickfunction if input is empty
+  if (inputField.value == '') {
+    return;
+  };
+
+  addSearchToHistory();
+  sendToStorage();
+
   let gameName = inputField.value.trim().replace(/ /g, '-'); // Replace spaces with +
   const rawgApiUrl = `https://api.rawg.io/api/games/${gameName}?language=en&key=${rawgAPIKey}`;
   fetchRawgApi(rawgApiUrl);
