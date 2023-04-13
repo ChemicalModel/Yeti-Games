@@ -210,38 +210,42 @@ function useInfo(minimumRequirements, recommendedRequirements) {
 // ========== RAINFOREST API REQUEST =========== //
 function fetchRainforestApi() {
   let rfApiUrl = [`https://api.rainforestapi.com/request?api_key=${rainforestAPIKey}&type=search&amazon_domain=amazon.com&sort_by=featured&search_term=${minComponentArray[0][0]}`,
-                  `https://api.rainforestapi.com/request?api_key=${rainforestAPIKey}&type=search&amazon_domain=amazon.com&sort_by=featured&search_term=${minComponentArray[1][0]}`, 
-                  `https://api.rainforestapi.com/request?api_key=${rainforestAPIKey}&type=search&amazon_domain=amazon.com&sort_by=featured&search_term=${minComponentArray[2][0]}`, 
+                  `https://api.rainforestapi.com/request?api_key=${rainforestAPIKey}&type=search&amazon_domain=amazon.com&sort_by=featured&search_term=${minComponentArray[1][0]}`,
+                  `https://api.rainforestapi.com/request?api_key=${rainforestAPIKey}&type=search&amazon_domain=amazon.com&sort_by=featured&search_term=${minComponentArray[2][0]}`,
                   `https://api.rainforestapi.com/request?api_key=${rainforestAPIKey}&type=search&amazon_domain=amazon.com&sort_by=featured&search_term=${minComponentArray[3][0]}`];
-  let results = [];
 
+  let results = [];
+  
   for (let i = 0; i < rfApiUrl.length; i++) {
-    
+    let item = {};
    
  fetch(rfApiUrl[i])
   .then(response => response.json())
   .then(data => {
     console.log(data);
     try {
-      const result1 = data.search_results[0].title ;
+      const result1 = data.search_results[0].title;
       const result2 = data.search_results[0].link;
       const result3 = data.search_results[0].image;
-      const result4 = data.search_results[0].price.raw;
+      let result4;
+
+      if (data.search_results[0].price && data.search_results[0].price.raw) {
+        result4 = data.search_results[0].price.raw;
+      } else {
+        result4 = '';
+      }
+
+        item.title = result1;
+        item.link = result2;
+        item.image = result3;
+        item.price = result4;
       
-      const item = {
-        title: result1,
-        link: result2,
-        image: result3,
-        price: result4
-      };
-    
+    console.log(item); 
       results.push(item);
       console.log(results);
     } catch (error) {
       // Modify the value of result4 if it caused an error
-      if (error instanceof TypeError || error.message.includes("cannot read property 'raw' of undefined")) {
-        item.price = '';
-      }
+      
     }
   })
   .catch(error => console.log(error));
