@@ -152,7 +152,9 @@
     <form action="#" class="flex justify-center py-32">
       <input type="text"
         class="rounded-l-lg p-4 border-t mr-0 border-b border-l text-gray-800 border-gray-200 bg-white w-96"
-        placeholder="Search Game By Title" />
+        placeholder="Search Game By Title"
+        list="search-options" 
+        autocomplete="off" />
       <!--Search Button-->
       <button id="search-button"
         class="px-8 rounded-r-lg bg-slate-200 text-gray-800 font-bold p-4 uppercase border-t border-b border-r transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-100 hover:bg-indigo-400 duration-300">Search</button>
@@ -188,6 +190,12 @@
     <p class="flex justify-center font-bold italic text-slate-500">Contributers: Michael Mcleod, Devin Reilly, Jose
       Torres, Tyler Eppley</p>
   </footer>
+
+
+  <!-- Database Lists -->
+  <datalist id="search-options">
+  </datalist>
+
 
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
