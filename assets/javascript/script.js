@@ -11,6 +11,8 @@ const neededComponents = [
 ];
 const memorySearchTerm = 'ddr4 dimm';
 const storageSearchTerm = 'sata ssd';
+const graphicsSearchTerm = 'gpu ';
+const processorSearhTerm = 'cpu ';
 
 
 let minComponentArray = [];
@@ -232,6 +234,8 @@ function useInfo(minimumRequirements, recommendedRequirements) {
     };
     minComponentArray[1] = [memorySearchTerm + minComponentArray[1]];
     minComponentArray[3] = [storageSearchTerm + minComponentArray[3]];
+    minComponentArray[0] = [processorSearhTerm + minComponentArray[0][0]];
+    minComponentArray[2] = [graphicsSearchTerm + minComponentArray[2][0]];
     console.log(minComponentArray);
   }
   if (recommendedRequirements) {
@@ -246,6 +250,8 @@ function useInfo(minimumRequirements, recommendedRequirements) {
     };
     recComponentArray[1] = [memorySearchTerm + recComponentArray[1]];
     recComponentArray[3] = [storageSearchTerm + recComponentArray[3]];
+    recComponentArray[0] = [processorSearhTerm + recComponentArray[0][0]];
+    recComponentArray[2] = [graphicsSearchTerm + recComponentArray[2][0]];
     console.log(recComponentArray);
   }
 
