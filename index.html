@@ -144,6 +144,7 @@
 <!--Header-->
 <header class="text-white hover:text-black text-5xl font-bold underline ring-2 ring-stone-900 hover:ring-amber-500"><a href="https://github.com/ChemicalModel/Yeti-Games"target="_blank">YETI Games: PC Requirements Search</a></header>
 <body class="bg-gradient-to-r from-indigo-500 to-cyan-400">
+  <main>
   <!--Search bar-->
   <div id="search-bar">
     <form action="#" class="flex justify-center py-28">
@@ -158,48 +159,56 @@
     </form>
   </div>
   <!--Minimum Specs List-->
-  <div class="flex flex-wrap container mx-auto mr-72">
-    <div class="w-1/2">
-      <p class="text-lg font-bold font-serif underline">Minimum Specs:</p>
-      <ul class="min-specs-list text-white" style="display: none">
-        <li class="mt-6 font-bold max-h-72">Processor:<br />
-          <span id="processorspan"></span>
+  <div class="flex flex-wrap container w-5/6 m-auto p-2 border-2 rounded-3xl place-content-between">
+    <div class="bg-gradient-to-r from-slate-400 to-slate-300 border-2 rounded-2xl p-5" style="width: 49.3%">
+      <p class="text-3xl font-bold font-mono underline text-center">Minimum Specs:</p>
+      <ul class="min-specs-list text-white text-xl" style="display: none">
+        <li class="mt-6 font-bold max-h-72">
+          <h3 class="w-5/6 border-b-2  m-auto">Processor:</h3>
+          <p class="text-base" id="minprocessorp"></p>
         </li>
-        <li class="mt-36 font-bold max-h-72">Memory:<br />
-          <span id="memoryspan"></span>
+        <li class="mt-36 font-bold max-h-72">
+          <h3 class="w-5/6 border-b-2  m-auto">Memory:</h3>
+          <p class="text-base" id="minmemoryp"></p>
         </li>
-        <li class="mt-36 font-bold max-h-72">Graphics:<br />
-          <span id="graphicsspan"></span>
+        <li class="mt-36 font-bold max-h-72">
+          <h3 class="w-5/6 border-b-2  m-auto">Graphics:</h3>
+          <p class="text-base" id="mingraphicsp"></p>
         </li>
-        <li class="mt-36 font-bold max-h-72">Storage:<br />
-          <span id="storagespan"></span>
+        <li class="my-36 font-bold max-h-72">
+          <h3 class="w-5/6 border-b-2  m-auto">Storage:</h3>
+          <p class="text-base" id="minstoragep"></p>
         </li>
       </ul>
     </div>
     <!--Maximum Specs List-->
-    <div class="w-1/2">
-      <p class="text-lg font-bold font-serif underline">Recommended Specs:</p>
-      <ul class="max-specs-list text-white" style="display: none">
-        <li class="mt-6 font-bold max-h-72">Processor:<br />
-          <span id="maxprocessorspan"></span>
+    <div class="bg-gradient-to-r from-slate-300 to-slate-400 border-2 rounded-2xl p-5" style="width: 49.3%">
+      <p class="text-3xl font-bold font-mono underline text-center">Recommended Specs:</p>
+      <ul class="max-specs-list text-white text-xl" style="display: none">
+        <li class="mt-6 font-bold max-h-72">
+          <h3 class="w-5/6 border-b-2  m-auto">Processor:</h3>
+          <p class="text-base" id="maxprocessorp"></p>
         </li>
-        <li class="mt-36 font-bold max-h-72">Memory:<br />
-          <span id="maxmemoryspan"></span>
+        <li class="mt-36 font-bold max-h-72">
+          <h3 class="w-5/6 border-b-2  m-auto">Memory:</h3>
+          <p class="text-base" id="maxmemoryp"></p>
         </li>
-        <li class="mt-36 font-bold max-h-72">Graphics:<br />
-          <span id="maxgraphicsspan"></span>
+        <li class="mt-36 font-bold max-h-72">
+          <h3 class="w-5/6 border-b-2  m-auto">Graphics:</h3>
+          <p class="text-base" id="maxgraphicsp"></p>
         </li>
-        <li class="mt-36 font-bold max-h-72">Storage:<br />
-          <span id="maxstoragespan"></span>
+        <li class="my-36 font-bold max-h-72">
+          <h3 class="w-5/6 border-b-2  m-auto">Storage:</h3>
+          <p class="text-base" id="maxstoragep"></p>
         </li>
       </ul>
     </div>
   </div>
   <!--Footer-->
-  <footer class="outline outline-offset-2 outline-2">
-    <p class="mt-36 flex justify-center text-center font-bold italic text-slate-500">Resources: Rainforest API and RAWG API</p>
-    <p class="flex justify-center text-center font-bold italic text-slate-500">Styled with Tailwind <a href="https://tailwindcss.com/"target="_blank"><svg height="36" preserveAspectRatio="xMidYMid" width="28" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 153.6"><linearGradient id="a" x1="-2.778%" y1="32%" y2="67.556%"><stop offset="0" stop-color="#2298bd"/><stop offset="1" stop-color="#0ed7b5"/></linearGradient><path d="M128 0C93.867 0 72.533 17.067 64 51.2 76.8 34.133 91.733 27.733 108.8 32c9.737 2.434 16.697 9.499 24.401 17.318C145.751 62.057 160.275 76.8 192 76.8c34.133 0 55.467-17.067 64-51.2-12.8 17.067-27.733 23.467-44.8 19.2-9.737-2.434-16.697-9.499-24.401-17.318C174.249 14.743 159.725 0 128 0zM64 76.8C29.867 76.8 8.533 93.867 0 128c12.8-17.067 27.733-23.467 44.8-19.2 9.737 2.434 16.697 9.499 24.401 17.318C81.751 138.857 96.275 153.6 128 153.6c34.133 0 55.467-17.067 64-51.2-12.8 17.067-27.733 23.467-44.8 19.2-9.737-2.434-16.697-9.499-24.401-17.318C110.249 91.543 95.725 76.8 64 76.8z" fill="url(#a)"/> </a> </svg> </p>
-    <p class="flex justify-center font-bold italic text-slate-500">Contributors: Michael McLeod, Devin Reilly, Jose Torres, Tyler Eppley</p>
+  <footer class="bg-slate-400">
+    <p class="mt-36 flex justify-center text-center font-bold italic text-slate-900 mt-50">Resources: Rainforest API and RAWG API</p>
+    <p class="flex justify-center text-center font-bold italic text-slate-900">Styled with Tailwind <a href="https://tailwindcss.com/"target="_blank"><svg height="36" preserveAspectRatio="xMidYMid" width="28" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 153.6"><linearGradient id="a" x1="-2.778%" y1="32%" y2="67.556%"><stop offset="0" stop-color="#2298bd"/><stop offset="1" stop-color="#0ed7b5"/></linearGradient><path d="M128 0C93.867 0 72.533 17.067 64 51.2 76.8 34.133 91.733 27.733 108.8 32c9.737 2.434 16.697 9.499 24.401 17.318C145.751 62.057 160.275 76.8 192 76.8c34.133 0 55.467-17.067 64-51.2-12.8 17.067-27.733 23.467-44.8 19.2-9.737-2.434-16.697-9.499-24.401-17.318C174.249 14.743 159.725 0 128 0zM64 76.8C29.867 76.8 8.533 93.867 0 128c12.8-17.067 27.733-23.467 44.8-19.2 9.737 2.434 16.697 9.499 24.401 17.318C81.751 138.857 96.275 153.6 128 153.6c34.133 0 55.467-17.067 64-51.2-12.8 17.067-27.733 23.467-44.8 19.2-9.737-2.434-16.697-9.499-24.401-17.318C110.249 91.543 95.725 76.8 64 76.8z" fill="url(#a)"/> </a> </svg> </p>
+    <p class="flex justify-center font-bold italic text-slate-900">Contributors: Michael McLeod, Devin Reilly, Jose Torres, Tyler Eppley</p>
   </footer>
 
 
@@ -236,6 +245,7 @@
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
   <script src="./assets/javascript/script.js" async defer></script>
+</main>
 </body>
 
 </html>

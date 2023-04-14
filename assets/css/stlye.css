@@ -1,6 +1,12 @@
 * {
   margin: 0;
 }
+main {
+  background-image: url(../images/6204067-removebg.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
 
 header {
   height: 100%;
@@ -92,3 +98,11 @@ img {
   text-decoration: none;
   cursor: pointer;
 }
+
+
+
+/* ============================================================================================= */
+/* ------------------------------  MAIN PAGE STYLES  ------------------------------ */
+/* ============================================================================================= */
+
+

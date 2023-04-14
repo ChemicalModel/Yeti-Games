@@ -299,7 +299,7 @@ function fetchRainforestApi() {
 
           // Update the HTML with the results
           if (i < 4) {
-            let element = minimumSpecs.children[i].querySelector('span');
+            let element = minimumSpecs.children[i].querySelector('p');
             element.innerHTML = '';
             let title = document.createElement('p');
             title.innerHTML = item.title;
@@ -311,11 +311,11 @@ function fetchRainforestApi() {
             link.href = item.link;
             link.setAttribute('target', '_blank');
             link.appendChild(image);
-            image.style.maxWidth = '300px';
+            image.style.maxWidth = '250px';
             image.style.maxHeight = '200px';
             element.append(link);
           } else {
-            let element = maximumSpecs.children[i - 4].querySelector('span');
+            let element = maximumSpecs.children[i - 4].querySelector('p');
             element.innerHTML = '';
             let title = document.createElement('p');
             title.innerHTML = item.title;
