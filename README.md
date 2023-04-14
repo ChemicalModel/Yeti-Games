@@ -93,13 +93,16 @@ There are a few special features that we have included on this page:
 - More to Come!!
 
 ### [Examples](#examples)
-Here is an example of a search for the minimum and recommended hardware for the game Elden Ring.
+<br />
+Here is an example our YETI Games landing page.
+
+<img style="text-align: center" src="./assets/images/yeti-games-new-style-screenshot.jpg" alt="Elden Ring Minimum and Recommended Processors" style="width:100%;height:100%"/>
 
 <br />
 
-<img style="text-align: center" src="./assets/images/yeti-games-usage-screenshot.jpg" alt="Elden Ring Minimum and Recommended Processors" style="width:100%;height:100%"/>
+Here is an example of a search for the minimum and recommended hardware for the game Elden Ring.
 
-
+<img style="text-align: center" src="./assets/images/yet-games-new-style-search-screenshot.jpg" alt="Elden Ring Minimum and Recommended Processors" style="width:100%;height:100%"/>
 <br />
 
 ---
